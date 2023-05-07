@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+#main-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#acount-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#acount-container * {
+    margin: 0.25% 0;
+    size: auto;
+}
+
+#acount-btns {
+    display: flex;
+    justify-content: space-around;
+}
+
+#acount-btns > button {
+    width: 100%;
+}
+
+#register-btn {
+    background-color: greenyellow;
+}
+
+#login-btn {
+    background-color: cyan;
+}
+
