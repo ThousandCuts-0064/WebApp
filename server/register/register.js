@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
     const { username, password } = req.body;
+
     try {
         const result = await pool
             .request()
@@ -13,13 +14,17 @@ router.post("/", async (req, res) => {
             .input("password", sql.VarChar, password)
             .query`SELECT * FROM Users WHERE username = @username AND password = @password`;
 
-        if (result.recordset.length === 0) {
-            res.status(404).send({ err: "User not found" });
+        if (result.recordset.length > 0) {
+            res.status(404).send({ err: "User already exists" });
         } else {
-            const user = result.recordset[0];
+            await pool
+                .request()
+                .input("username", sql.VarChar, username)
+                .input("password", sql.VarChar, password)
+                .query`INSERT INTO Users (username, password, isAdmin) VALUES(@username, @password, 0)`;
+
             res.status(200).send({
-                exist: true,
-                isAdmin: user.isAdmin,
+                registerSuccess: true,
             });
         }
     } catch (err) {

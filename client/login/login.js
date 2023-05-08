@@ -1,33 +1,41 @@
-// const btn = document.querySelector("#login-btn");
-// btn.addEventListener("click", () => {
-//     fetch("http://localhost:3000/products")
-//         .then((response) => response.text())
-//         .then((data) => console.log(data))
-//         .catch((error) => console.error(error));
-// });
+const isValid = "isValid";
+const isAdmin = "isAdmin";
+localStorage.setItem(isValid, false);
+localStorage.setItem(isAdmin, false);
 
-const btn = document.querySelector("#login-btn");
-btn.addEventListener("click", async (event) => {
+const btnLogin = document.querySelector("#login-btn");
+btnLogin.addEventListener("click", async (event) => {
     event.preventDefault();
-    const username = document.querySelector("#username").value;
-    const password = document.querySelector("#password").value;
-    // const userInfo = new FormData();
-    // userInfo.append("username", username);
-    // userInfo.append("password", password);
+    const username = document.querySelector("#username");
+    const password = document.querySelector("#password");
+
     const response = await fetch("http://localhost:3000/auth", {
         method: "POST",
-        mode: "cors",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            username: username,
-            password: password,
+            username: username.value,
+            password: password.value,
         }),
     });
-    // const isAdmin = await response.json();
-    // console.log(isAdmin);
-    console.log(response);
+
+    const userFlags = await response.json();
+    if (!userFlags.exist) {
+        btnLogin.style.backgroundColor = "red";
+        password.value = "";
+        setTimeout(() => {
+            btnLogin.style.backgroundColor = "cyan";
+        }, 3000);
+        return;
+    }
+
+    if (userFlags.isAdmin) localStorage.setItem(isAdmin, true);
+    localStorage.setItem(isValid, true);
+    location = "../user/user.html";
 });
 
-// location = "../user/user.html";
+const btnRegister = document.querySelector("#register-btn");
+btnRegister.addEventListener("click", async (event) => {
+    location = "../register/register.html";
+});

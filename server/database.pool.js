@@ -1,4 +1,6 @@
-const config = {
+import sql from "mssql";
+
+const pool = new sql.ConnectionPool({
     server: "localhost",
     user: "admin",
     password: "admin",
@@ -7,6 +9,7 @@ const config = {
         encrypt: true,
         trustServerCertificate: true,
     },
-};
+});
+pool.connect();
 
-export default config;
+export default pool;
