@@ -6,10 +6,17 @@ if (localStorage.getItem("isAdmin") === "true") {
     const navbar = document.querySelector("#navbar");
     const editBtn = document.createElement("li");
     const editBtnAnchor = document.createElement("a");
-    editBtnAnchor.href = "#";
+    editBtnAnchor.href = "TODO";
     editBtnAnchor.textContent = "Edit";
     editBtn.appendChild(editBtnAnchor);
     navbar.appendChild(editBtn);
+
+    const newBtn = document.createElement("li");
+    const newBtnAnchor = document.createElement("a");
+    newBtnAnchor.href = "./newProduct/newProduct.html";
+    newBtnAnchor.textContent = "New";
+    newBtn.appendChild(newBtnAnchor);
+    navbar.appendChild(newBtn);
 }
 
 const getProducts = async () => {

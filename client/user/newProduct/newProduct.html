@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="newProduct.css" />
     </head>
     <body>
-        <div>
+        <div id="product-container">
             <input required id="name" type="text" placeholder="Name" />
             <input required id="price" type="text" placeholder="Price" />
             <input
@@ -18,12 +18,14 @@
                 accept="image/png, image/jpeg, image/jpg"
                 placeholder="Image"
             />
-            <textbox
+            <textarea
                 required
                 id="description"
                 type="text"
                 placeholder="Description"
-            />
+            >
+            </textarea>
+            <button id="add-btn" type="submit">Add</button>
         </div>
         <script src="newProduct.js"></script>
     </body>
