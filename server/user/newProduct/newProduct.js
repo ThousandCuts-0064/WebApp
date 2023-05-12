@@ -9,6 +9,7 @@ const upload = multer();
 router.post("/", upload.single("image"), async (req, res) => {
     const { name, price, description } = req.body;
     const image = req.file;
+
     try {
         await pool
             .request()
@@ -21,7 +22,7 @@ router.post("/", upload.single("image"), async (req, res) => {
         res.status(200).send({ msg: "successfull" });
     } catch (err) {
         console.log(err);
-        res.status(500).send({ err: "Internal server error" });
+        res.status(500).send({ err: "Internal server erroreeee" });
     }
 });
 
