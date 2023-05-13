@@ -32,7 +32,7 @@ btn.addEventListener("click", async (event) => {
     });
 
     const registerInfo = await response.json();
-    if (registerInfo.registerSuccess) {
+    if (registerInfo.isSuccess) {
         localStorage.setItem(isValid, true);
         location = "../user/user.html";
     } else {

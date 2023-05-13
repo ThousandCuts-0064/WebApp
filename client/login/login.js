@@ -9,7 +9,7 @@ btnLogin.addEventListener("click", async (event) => {
     const username = document.querySelector("#username");
     const password = document.querySelector("#password");
 
-    const response = await fetch("http://localhost:3000/auth", {
+    const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -21,7 +21,7 @@ btnLogin.addEventListener("click", async (event) => {
     });
 
     const userFlags = await response.json();
-    if (!userFlags.exist) {
+    if (!userFlags.isSuccess) {
         btnLogin.style.backgroundColor = "red";
         password.value = "";
         setTimeout(() => {

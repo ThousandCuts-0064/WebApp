@@ -15,7 +15,10 @@ router.post("/", async (req, res) => {
             .query`SELECT * FROM Users WHERE username = @username AND password = @password`;
 
         if (result.recordset.length > 0) {
-            res.status(404).send({ err: "User already exists" });
+            res.status(404).send({
+                isSuccess: false,
+                msg: "User already exists",
+            });
         } else {
             await pool
                 .request()
@@ -23,13 +26,11 @@ router.post("/", async (req, res) => {
                 .input("password", sql.VarChar, password)
                 .query`INSERT INTO Users (username, password, isAdmin) VALUES(@username, @password, 0)`;
 
-            res.status(200).send({
-                registerSuccess: true,
-            });
+            res.status(200).send({ isSuccess: true });
         }
     } catch (err) {
         console.log(err);
-        res.status(500).send({ err: "Internal server error" });
+        res.status(500).send({ isSuccess: false });
     }
 });
 
