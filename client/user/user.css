@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: rgb(44, 44, 44);
 }
 
 body {
@@ -13,7 +14,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #666;
+    background-color: rgb(29, 29, 29);
     position: fixed;
     top: 0;
     width: 100%;
@@ -30,15 +31,12 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    background-color: rgb(29, 29, 29);
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: #111;
-}
-
-.active {
-    background-color: #4caf50;
 }
 
 #products-container {
@@ -49,9 +47,10 @@ li a:hover {
     justify-content: space-evenly;
 }
 
-#product-container {
+.product-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: white;
 }

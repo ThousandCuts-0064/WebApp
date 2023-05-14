@@ -22,10 +22,11 @@ btnLogin.addEventListener("click", async (event) => {
 
     const userFlags = await response.json();
     if (!userFlags.isSuccess) {
-        btnLogin.style.backgroundColor = "red";
+        let oldColor = btnLogin.style.backgroundColor;
+        btnLogin.style.backgroundColor = "darkred";
         password.value = "";
         setTimeout(() => {
-            btnLogin.style.backgroundColor = "cyan";
+            btnLogin.style.backgroundColor = oldColor;
         }, 3000);
         return;
     }

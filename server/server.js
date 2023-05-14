@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 //import multer from "multer";
 import userRouter from "./user/user.js";
 import registerRouter from "./register/register.js";
-import loginRouter from "./login/login.js";
+import loginRouter from "./login/auth.js";
 import newProductRouter from "./user/newProduct/newProduct.js";
 import editProductRouter from "./user/editProduct/editProduct.js";
 
