@@ -9,7 +9,7 @@ btnLogin.addEventListener("click", async (event) => {
     const username = document.querySelector("#username");
     const password = document.querySelector("#password");
 
-    const response = await fetch("http://localhost:3000/auth", {
+    const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -21,11 +21,12 @@ btnLogin.addEventListener("click", async (event) => {
     });
 
     const userFlags = await response.json();
-    if (!userFlags.exist) {
-        btnLogin.style.backgroundColor = "red";
+    if (!userFlags.isSuccess) {
+        let oldColor = btnLogin.style.backgroundColor;
+        btnLogin.style.backgroundColor = "darkred";
         password.value = "";
         setTimeout(() => {
-            btnLogin.style.backgroundColor = "cyan";
+            btnLogin.style.backgroundColor = oldColor;
         }, 3000);
         return;
     }

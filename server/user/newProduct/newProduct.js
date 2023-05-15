@@ -4,9 +4,8 @@ import multer from "multer";
 import pool from "../../database.pool.js";
 
 const router = express.Router();
-const upload = multer();
 
-router.post("/", upload.single("image"), async (req, res) => {
+router.post("/", multer().single("image"), async (req, res) => {
     const { name, price, description } = req.body;
     const image = req.file;
 
@@ -19,10 +18,10 @@ router.post("/", upload.single("image"), async (req, res) => {
             .input("price", sql.Money, price)
             .query`INSERT INTO Products (name, description, image, price) VALUES(@name, @description, @image, @price)`;
 
-        res.status(200).send({ msg: "successfull" });
+        res.status(200).send({ isSuccess: true });
     } catch (err) {
         console.log(err);
-        res.status(500).send({ err: "Internal server erroreeee" });
+        res.status(500).send({ isSuccess: false });
     }
 });
 

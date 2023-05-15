@@ -19,4 +19,8 @@ document.querySelector("#add-btn").addEventListener("click", async (event) => {
         method: "POST",
         body: formData,
     });
+    const result = await response.json();
+    if (result.isSuccess) {
+        location = "../../user/user.html";
+    }
 });

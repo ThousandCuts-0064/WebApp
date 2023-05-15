@@ -14,17 +14,20 @@ router.post("/", async (req, res) => {
             .query`SELECT * FROM Users WHERE username = @username AND password = @password`;
 
         if (result.recordset.length === 0) {
-            res.status(404).send({ err: "User not found" });
+            res.status(404).send({
+                isSuccess: false,
+                msg: "User not found",
+            });
         } else {
             const user = result.recordset[0];
             res.status(200).send({
-                exist: true,
+                isSuccess: true,
                 isAdmin: user.isAdmin,
             });
         }
     } catch (err) {
         console.log(err);
-        res.status(500).send({ err: "Internal server error" });
+        res.status(500).send({ isSuccess: false });
     }
 });
 

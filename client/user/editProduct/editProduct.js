@@ -2,36 +2,61 @@ if (localStorage.getItem("isValid") === "false") {
     location = "../../login/login.html";
 }
 
+const selectedProductKey = "selectedProductId";
+
 const namePrd = document.querySelector("#name");
-const image = document.querySelector("#image");
 const price = document.querySelector("#price");
+const image = document.querySelector("#image");
+const imageInput = document.querySelector("#imageInput");
 const description = document.querySelector("#description");
 
-const formData = new FormData();
-
-const updateProduct = async () => {
-    const response = await fetch("http://localhost:3000/editProduct", {
+const showProduct = async () => {
+    const response = await fetch("http://localhost:3000/editProduct/id", {
         method: "POST",
-        body: formData,
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id: localStorage.getItem(selectedProductKey),
+        }),
     });
-    const product = await response.json();
+    const result = await response.json();
+    const product = result.product;
 
-    console.log(product);
-
-    namePrd.textContent = product.name;
-    price.textContent = product.price;
+    namePrd.value = product.name;
+    price.value = product.price;
+    const imgStr = window.btoa(
+        String.fromCharCode.apply(null, product.image.data)
+    );
+    image.src = "data:image/png;base64," + imgStr;
     description.textContent = product.description;
-
-    document
-        .querySelector("#update-btn")
-        .addEventListener("click", async (event) => {
-            event.preventDefault();
-
-            formData.append("id", localStorage.getItem("selectedProductId"));
-            formData.append("name", namePrd.value);
-            formData.append("price", price.value);
-            formData.append("image", image.files[0]);
-            formData.append("description", description.value);
-        });
 };
-updateProduct();
+showProduct();
+
+document
+    .querySelector("#update-btn")
+    .addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append("id", localStorage.getItem(selectedProductKey));
+        formData.append("name", namePrd.value);
+        formData.append("price", price.value);
+        formData.append("description", description.value);
+
+        if (imageInput.files[0]) {
+            formData.append("image", imageInput.files[0]);
+        }
+
+        const response = await fetch(
+            "http://localhost:3000/editProduct/update",
+            {
+                method: "POST",
+                body: formData,
+            }
+        );
+        const result = await response.json();
+        if (result.isSuccess) {
+            location = "../../user/user.html";
+        }
+    });
