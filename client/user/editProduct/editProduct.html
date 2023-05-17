@@ -5,27 +5,46 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Product</title>
+        <link rel="stylesheet" href="../../global.css" />
         <link rel="stylesheet" href="editProduct.css" />
     </head>
     <body>
         <div id="product-container">
-            <input required id="name" type="text" placeholder="Name" />
-            <input required id="price" type="text" placeholder="Price" />
+            <input
+                required
+                id="name"
+                class="clickable"
+                type="text"
+                placeholder="Name"
+            />
+            <input
+                required
+                id="price"
+                type="text"
+                class="clickable"
+                placeholder="Price"
+            />
             <img id="image" />
             <input
                 required
                 id="imageInput"
+                class="clickable"
                 type="file"
                 accept="image/png, image/jpeg, image/jpg"
             />
+            <label id="label" for="imageInput" class="clickable">Upload File</label>
             <textarea
                 required
                 id="description"
+                class="clickable"
                 type="text"
                 placeholder="Description"
             >
             </textarea>
-            <button id="update-btn" type="submit">Update</button>
+            <button id="update-btn" class="clickable" type="submit">
+                Update
+            </button>
+            <button id="delete-btn" class="clickable">Delete</button>
         </div>
         <script src="editProduct.js"></script>
     </body>

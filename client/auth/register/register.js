@@ -3,9 +3,8 @@ const isAdmin = "isAdmin";
 localStorage.setItem(isValid, false);
 localStorage.setItem(isAdmin, false);
 
-const btn = document.querySelector("#register-btn");
-btn.addEventListener("click", async (event) => {
-    event.preventDefault();
+const registerBtn = document.querySelector("#register-btn");
+registerBtn.addEventListener("click", async () => {
     const username = document.querySelector("#username");
     const password = document.querySelector("#password");
     const passwordConfirm = document.querySelector("#passwordConfirm");
@@ -34,7 +33,7 @@ btn.addEventListener("click", async (event) => {
     const registerInfo = await response.json();
     if (registerInfo.isSuccess) {
         localStorage.setItem(isValid, true);
-        location = "../user/user.html";
+        location = "../../user/user.html";
     } else {
         password.value = "";
         password.style.borderColor = "red";
@@ -45,4 +44,9 @@ btn.addEventListener("click", async (event) => {
             passwordConfirm.style.borderColor = "black";
         }, 3000);
     }
+});
+
+const loginBtn = document.querySelector("#login-btn");
+loginBtn.addEventListener("click", () => {
+    location = "../login/login.html";
 });

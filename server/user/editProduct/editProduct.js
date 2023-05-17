@@ -15,7 +15,7 @@ router.post("/id", async (req, res) => {
         res.status(200).send({ product: result.recordset[0] });
     } catch (err) {
         console.log(err);
-        res.status(500).send({ err: "Internal server error" });
+        res.status(500).send({ isSuccess: false });
     }
 });
 
@@ -37,6 +37,20 @@ router.post("/update", multer().single("image"), async (req, res) => {
         } else {
             await query.query`UPDATE Products SET name = @name, description = @description, price = @price WHERE id = @id`;
         }
+
+        res.status(200).send({ isSuccess: true });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({ isSuccess: false });
+    }
+});
+
+router.post("/delete", async (req, res) => {
+    const id = req.body.id;
+
+    try {
+        const result = await pool.request().input("id", sql.Int, id)
+            .query`DELETE FROM Products WHERE id = @id`;
 
         res.status(200).send({ isSuccess: true });
     } catch (err) {

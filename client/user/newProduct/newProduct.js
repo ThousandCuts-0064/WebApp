@@ -2,8 +2,7 @@ if (localStorage.getItem("isValid") === "false") {
     location = "../../login/login.html";
 }
 
-document.querySelector("#add-btn").addEventListener("click", async (event) => {
-    event.preventDefault();
+document.querySelector("#add-btn").addEventListener("click", async () => {
     const name = document.querySelector("#name");
     const image = document.querySelector("#image");
     const price = document.querySelector("#price");

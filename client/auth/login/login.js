@@ -4,8 +4,7 @@ localStorage.setItem(isValid, false);
 localStorage.setItem(isAdmin, false);
 
 const btnLogin = document.querySelector("#login-btn");
-btnLogin.addEventListener("click", async (event) => {
-    event.preventDefault();
+btnLogin.addEventListener("click", async () => {
     const username = document.querySelector("#username");
     const password = document.querySelector("#password");
 
@@ -33,10 +32,10 @@ btnLogin.addEventListener("click", async (event) => {
 
     if (userFlags.isAdmin) localStorage.setItem(isAdmin, true);
     localStorage.setItem(isValid, true);
-    location = "../user/user.html";
+    location = "../../user/user.html";
 });
 
 const btnRegister = document.querySelector("#register-btn");
-btnRegister.addEventListener("click", async (event) => {
+btnRegister.addEventListener("click", async () => {
     location = "../register/register.html";
 });

@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(44, 44, 44);
+    color: darkgray;
+}
+
+body {
+    height: 100vh;
+}
