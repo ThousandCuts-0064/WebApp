@@ -4,48 +4,36 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Product</title>
+        <title>Edit Product</title>
         <link rel="stylesheet" href="../../global.css" />
         <link rel="stylesheet" href="editProduct.css" />
     </head>
     <body>
+        <ul id="navbar">
+            <li id="back" class="floatRight">
+                <a href="../user.html">Back</a>
+            </li>
+        </ul>
         <div id="product-container">
-            <input
-                required
-                id="name"
-                class="clickable"
-                type="text"
-                placeholder="Name"
-            />
-            <input
-                required
-                id="price"
-                type="text"
-                class="clickable"
-                placeholder="Price"
-            />
+            <input required id="name" type="text" placeholder="Name" />
+            <input required id="price" type="text" placeholder="Price" />
             <img id="image" />
             <input
                 required
                 id="imageInput"
-                class="clickable"
                 type="file"
                 accept="image/png, image/jpeg, image/jpg"
             />
-            <label id="label" for="imageInput" class="clickable">Upload File</label>
+            <label id="label" for="imageInput">Upload File</label>
             <textarea
                 required
                 id="description"
-                class="clickable"
                 type="text"
                 placeholder="Description"
-            >
-            </textarea>
-            <button id="update-btn" class="clickable" type="submit">
-                Update
-            </button>
-            <button id="delete-btn" class="clickable">Delete</button>
+            ></textarea>
+            <button id="update-btn" type="submit">Update</button>
+            <button id="delete-btn">Delete</button>
         </div>
-        <script src="editProduct.js"></script>
+        <script src="editProduct.js" type="module"></script>
     </body>
 </html>

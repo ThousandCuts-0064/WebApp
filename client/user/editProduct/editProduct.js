@@ -1,6 +1,8 @@
-if (localStorage.getItem("isValid") === "false") {
-    location = "../../login/login.html";
-}
+import { checkValidity } from "../validation.js";
+import { checkAdmin } from "../validation.js";
+
+checkValidity();
+checkAdmin();
 
 const selectedProductKey = "selectedProductId";
 

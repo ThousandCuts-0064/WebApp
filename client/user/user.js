@@ -1,6 +1,5 @@
-if (localStorage.getItem("isValid") === "false") {
-    location = "../auth/login/login.html";
-}
+import { checkValidity } from "./validation.js";
+checkValidity();
 
 if (localStorage.getItem("isAdmin") === "true") {
     const navbar = document.querySelector("#navbar");
@@ -12,15 +11,20 @@ if (localStorage.getItem("isAdmin") === "true") {
     navbar.appendChild(newBtn);
 }
 
+document.querySelector("#logout").addEventListener("click", () => {
+    localStorage.clear();
+});
+
 (async () => {
     const generateCards = (length) => {
         const array = [];
         const productsContainer = document.querySelector("#products-container");
         for (let i = 0; i < length; i++) {
             const container = document.createElement("div");
-            container.appendChild(document.createElement("h3"));
-            container.appendChild(document.createElement("img"));
-            container.appendChild(document.createElement("p"));
+            container.classList.add("clickable");
+            container.append(document.createElement("h3"));
+            container.append(document.createElement("img"));
+            container.append(document.createElement("p"));
             productsContainer.appendChild(container);
             array.push(container);
         }

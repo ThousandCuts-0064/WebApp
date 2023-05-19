@@ -1,6 +1,8 @@
-if (localStorage.getItem("isValid") === "false") {
-    location = "../../login/login.html";
-}
+import { checkValidity } from "../validation.js";
+import { checkAdmin } from "../validation.js";
+
+checkValidity();
+checkAdmin();
 
 document.querySelector("#add-btn").addEventListener("click", async () => {
     const name = document.querySelector("#name");
@@ -22,4 +24,9 @@ document.querySelector("#add-btn").addEventListener("click", async () => {
     if (result.isSuccess) {
         location = "../../user/user.html";
     }
+});
+
+imageInput.addEventListener("change", async () => {
+    if (imageInput.files.length > 0)
+        label.textContent = imageInput.files[0].name;
 });

@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
             .query`SELECT * FROM Users WHERE username = @username AND password = @password`;
 
         if (result.recordset.length === 0) {
-            res.status(404).send({
+            res.status(403).send({
                 isSuccess: false,
                 msg: "User not found",
             });

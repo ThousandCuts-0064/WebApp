@@ -36,9 +36,9 @@ registerBtn.addEventListener("click", async () => {
         location = "../../user/user.html";
     } else {
         password.value = "";
-        password.style.borderColor = "red";
+        password.style.borderColor = "darkred";
         passwordConfirm.value = "";
-        passwordConfirm.style.borderColor = "red";
+        passwordConfirm.style.borderColor = "darkred";
         setTimeout(() => {
             password.style.borderColor = "black";
             passwordConfirm.style.borderColor = "black";
