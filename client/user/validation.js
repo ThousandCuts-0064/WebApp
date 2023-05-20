@@ -21,3 +21,4 @@ export const checkAdmin = () => {
         location = rootFolder + "/user/user.html";
     }
 };
+//
