@@ -1,6 +1,12 @@
 export const checkValidity = () => {
     if (localStorage.getItem("isValid") === "false") {
-        location = "../auth/login/login.html";
+        const path = location + "";
+        const rootFolderName = "client";
+        const rootFolder = path.substring(
+            0,
+            path.lastIndexOf(rootFolderName) + rootFolderName.length
+        );
+        location = rootFolder + "/auth/login/login.html";
     }
 };
 
