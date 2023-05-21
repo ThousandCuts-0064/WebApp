@@ -1,7 +1,10 @@
 import { checkValidity } from "./validation.js";
+
 checkValidity();
 
-if (localStorage.getItem("isAdmin") === "true") {
+const isAdmin = localStorage.getItem("isAdmin");
+
+if (isAdmin === "true") {
     const navbar = document.querySelector("#navbar");
     const newBtn = document.createElement("li");
     const newBtnAnchor = document.createElement("a");
@@ -47,7 +50,9 @@ document.querySelector("#logout").addEventListener("click", () => {
             card.getElementsByTagName("p")[0].textContent = product.description;
             card.addEventListener("click", () => {
                 localStorage.setItem("selectedProductId", product.id);
-                location = "./editProduct/editProduct.html";
+
+                if (isAdmin === "true")
+                    location = "./editProduct/editProduct.html";
             });
         });
     };

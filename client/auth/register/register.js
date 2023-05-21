@@ -9,9 +9,25 @@ registerBtn.addEventListener("click", async () => {
     const password = document.querySelector("#password");
     const passwordConfirm = document.querySelector("#passwordConfirm");
 
+    if (username.value.length < 4) {
+        username.style.borderColor = "darkred";
+        setTimeout(() => {
+            username.style.borderColor = "black";
+        }, 3000);
+        return;
+    }
+
+    if (password.value.length < 6) {
+        password.style.borderColor = "darkred";
+        setTimeout(() => {
+            password.style.borderColor = "black";
+        }, 3000);
+        return;
+    }
+
     if (password.value !== passwordConfirm.value) {
-        password.style.borderColor = "red";
-        passwordConfirm.style.borderColor = "red";
+        password.style.borderColor = "darkred";
+        passwordConfirm.style.borderColor = "darkred";
         setTimeout(() => {
             password.style.borderColor = "black";
             passwordConfirm.style.borderColor = "black";
