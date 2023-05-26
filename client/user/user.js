@@ -47,12 +47,13 @@ document.querySelector("#logout").addEventListener("click", () => {
                 product.name + ": " + product.price + "$";
             card.getElementsByTagName("img")[0].src =
                 "data:image/png;base64," + imgStr;
-            card.getElementsByTagName("p")[0].textContent = product.description;
+            // card.getElementsByTagName("p")[0].textContent = product.description;
             card.addEventListener("click", () => {
                 localStorage.setItem("selectedProductId", product.id);
 
                 if (isAdmin === "true")
                     location = "./editProduct/editProduct.html";
+                else location = "./viewProduct/viewProduct.html";
             });
         });
     };
