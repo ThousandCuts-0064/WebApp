@@ -6,7 +6,7 @@ checkAdmin();
 
 document.querySelector("#add-btn").addEventListener("click", async () => {
     const name = document.querySelector("#name");
-    const image = document.querySelector("#image");
+    const image = document.querySelector("#imageInput");
     const price = document.querySelector("#price");
     const description = document.querySelector("#description");
 
